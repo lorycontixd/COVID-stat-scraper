@@ -1,5 +1,5 @@
-from validator import Utility
-import mylogger as ml
+from modules.utility import Utility
+from modules import mylogger as ml
 import re
 import sys,os
 import subprocess
@@ -16,19 +16,19 @@ class App():
         self.website_main = "https://www.worldometers.info/coronavirus/"
         self.website_countries = "https://www.worldometers.info/coronavirus/#countries"
         self.cols = [
-            "Country",
-            "Total cases",
-            "New Cases",
-            "Total Deaths",
-            "New deaths",
-            "Total Recovered",
-            "Active Cases",
-            "Serious",
-            "Total Cases/1M pop",
-            "Deaths/1M pop",
-            "Total tests",
-            "Tests/1M pop",
-            "Population"
+            "country",
+            "total cases",
+            "new cases",
+            "total deaths",
+            "new deaths",
+            "total recovered",
+            "active cases",
+            "serious",
+            "total Cases/1m pop",
+            "deaths/1m pop",
+            "total tests",
+            "tests/1m pop",
+            "population"
         ]
 
         #Class Attributes

@@ -1,5 +1,5 @@
 import sqlite3
-import mylogger as ml
+from modules import mylogger as ml
 
 class RootDatabase():
     def __init__(self,dbname=None",max_tables=10000):
