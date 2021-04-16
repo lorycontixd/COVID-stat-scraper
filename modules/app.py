@@ -83,11 +83,7 @@ App class for Worldometers COVID scraping.
                     except:
                         pass
                 countries.append(temp)
-
-        for c in countries:
-            print(c)
-
-            #print(row.text)
+        return countries
 
     def get_country(self,country:str):
         elem = self.driver.find_element_by_id("main_table_countries_today")

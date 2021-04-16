@@ -8,7 +8,7 @@ FATAL = 4
 
 
 class Logger():
-    def __init__(self,filename=None,level=DEBUG,append=False):
+    def __init__(self,filename=None,level=INFO,append=False):
         if level not in [i for i in range(0,5)]:
             raise ValueError(f"Logger: Invalid value for level {level}")
         self.filename = filename

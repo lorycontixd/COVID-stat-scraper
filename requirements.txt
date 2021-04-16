@@ -4,3 +4,5 @@ argparse
 Markdown
 xvfbwrapper
 chromedriver
+jinja2
+pathlib

@@ -20,8 +20,6 @@ print(f"Accepted country argument: {country}")
 myapp = app.App("Chrome")
 data = myapp.get_country(country)
 TOTAL = myapp.get_total()
-print(data)
-print(TOTAL)
 
 cols = [
     "country",
@@ -40,7 +38,7 @@ cols = [
 ]
 
 def calculate_percentage(value,total):
-    return value/total*100
+    return float("{:.2f}".format(float(value)/float(total)*100))
 
 def get_value(attr,list):
     for k in list:
@@ -57,15 +55,30 @@ totalrecovered = get_value("total recovered",data)
 def graph_value():
     pass
 
-report = f"""
+report = """
 # {country}
 
-- Total tases: {totalcases}
-- New cases: {newcases}
-- Total deaths: {totaldeaths}
-"""
+- Total tases: {cases} ----> {world_cases}%% of world's
+- New cases: {newcases} ----> {world_newcases}%% of world's
+- Total deaths: {totaldeaths} ----> {world_totaldeaths}%% of world's
+- New deaths: {newdeaths} ----> {world_newdeaths}%% of world's
+- Total recovered: {recovered} ----> {world_recovered}%% of world's
+""".format(
+    country=country.capitalize(),
+    cases=totalcases,
+    world_cases=calculate_percentage(totalcases,get_value("total cases",TOTAL)),
+    newcases=newcases,
+    world_newcases=calculate_percentage(newcases,get_value("new cases",TOTAL)),
+    totaldeaths=totaldeaths,
+    world_totaldeaths=calculate_percentage(totaldeaths,get_value("total deaths",TOTAL)),
+    newdeaths=newdeaths,
+    world_newdeaths=calculate_percentage(newdeaths,get_value("new deaths",TOTAL)),
+    recovered=totalcases,
+    world_recovered=calculate_percentage(totalrecovered,get_value("total recovered",TOTAL))
+)
 
-reportmaker.append(report)
+print("main: making report... ")
+reportmaker.append_text(report)
 reportmaker.compile()
 
 
